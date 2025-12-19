@@ -1,0 +1,20 @@
+## Fonts — 
+webfont files and font‑loading helpers.
+
+"""
+What goes into webfont files and a font‑loading helper
+Webfont files: .woff2 .woff .ttf .otf — the actual font binaries you serve from static/fonts/; use .woff2 for best compression and modern browser support.
+
+@font-face CSS declarations — one @font-face rule per font/weight/format that points to your static files and sets font-display (e.g., swap) to avoid invisible text.
+
+Preload hints — <link rel="preload" as="font" type="font/woff2" crossorigin> in your HTML head for critical fonts to reduce LCP.
+
+JavaScript font‑loading helper — optional small script using the Font Loading API (document.fonts.load() / FontFaceSet) or a lightweight library to manage class toggles (e.g., .font-loading, .font-active) and fallbacks.
+
+Fallback stack and metrics — system font fallbacks in CSS and telemetry hooks to measure FOUT/FOIT and performance impact.
+
+Licensing and subset files — include only permitted, subsetted glyphs (e.g., Latin only) to shrink file size and respect font licenses.
+
+Important: serve fonts with crossorigin when preloading and set proper cache headers; treat fonts as public assets and fingerprint them for long cache lifetimes.
+
+"""
