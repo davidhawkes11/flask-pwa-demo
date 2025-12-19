@@ -1,5 +1,4 @@
 FROM python:3.13-slim
-WORKDIR /workspace
 
 # Install Git and other essentials RUN apt-get update && apt-get install -y git nano && rm -rf /var/lib/apt/lists/*
 
@@ -7,10 +6,6 @@ COPY requirements-dev.txt .
 RUN pip install --no-cache-dir -r requirements-dev.txt
 COPY app/ ./app
 CMD ["python", "app/main.py"]
-
-
-
-FROM python:3.13-slim
 
 # Create non-root user
 RUN useradd --create-home appuser
@@ -26,4 +21,3 @@ RUN pip install --user -r requirements.txt
 
 EXPOSE 8000
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "app:create_app()"]
-
