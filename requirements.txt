@@ -1,1 +1,7 @@
 flask
+bandit
+pip-audit
+pipdeptree
+safety
+snyk
+trivy
