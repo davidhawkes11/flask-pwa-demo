@@ -1,10 +1,41 @@
-# Byte-compiled / optimized / DLL files
+# Python bytecode and caches
 __pycache__/
-*.py[codz]
-*$py.class
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# Editor and OS files
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Misc
+coverage.xml
+
+# CI artifacts
+.ci/artifacts/
+ci-artifacts/
+.github/workflows/*.local.yml
+
+# Local environment files and secrets (keep example files in repo)
+.env
+.env.local
+secrets.*.env
+*.secret
+*.key
 
 # C extensions
 *.so
+
+# Docker
+docker-compose.override.yml
+docker-compose.*.local.yml
+*.log
 
 # Distribution / packaging
 .Python
@@ -25,6 +56,15 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+
+# Instance folder (runtime overrides, local secrets)
+instance/
+
+# Databases and runtime files
+*.sqlite3
+*.db
+*.db-journal
+*.log
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -50,6 +90,26 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Node / frontend build artifacts
+node_modules/
+npm-debug.log*
+yarn-error.log
+app/static/dist/
+app/static/build/
+
+# Packaging and wheel caches
+pip-log.txt
+
+# Type checkers and caches
+.mypy_cache/
+.cache/
 
 # Translations
 *.mo
@@ -134,8 +194,7 @@ celerybeat.pid
 # SageMath parsed files
 *.sage.py
 
-# Environments
-# Ignore local environment files
+# Virtual Environments
 .env
 .envrc
 .venv
