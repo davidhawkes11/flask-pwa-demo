@@ -23,3 +23,12 @@ This project uses the following tools to provide an authentic example of industr
 - Dev tooling (bandit, pip-audit, safety) runs locally and in CI to catch code and dependency issues early.
 
 - Instance folder keeps secrets and local DB out of source control; CI should populate instance files from a vault.
+
+
+## How to run locally in Codespace
+
+- Build devcontainer or open Codespace so the devcontainer installs requirements-dev.txt.
+
+- Create instance folder and copy .env.example to instance/.env and populate secrets.
+
+- Create DB and run migrations:
