@@ -17,7 +17,7 @@ USER appuser
 
 ENV PATH="/home/appuser/.local/bin:${PATH}"
 RUN python -m pip install --upgrade pip
-RUN pip install --user -r requirements.txt
+RUN pip install --user -r requirements-dev.txt
 
 EXPOSE 8000
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "app:create_app()"]
