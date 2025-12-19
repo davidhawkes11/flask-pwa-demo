@@ -1,0 +1,3 @@
+## Build outputs — 
+# compiled bundles (e.g., app/static/dist/); 
+keep source files elsewhere and ignore build artifacts in Git.
