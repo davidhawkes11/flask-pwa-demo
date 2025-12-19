@@ -1,19 +1,47 @@
 {
-  "name": "Flask PWA",
-  "dockerFile": "Dockerfile",
-  "context": "..",
-  
-  "remoteEnv": {
-  "FLASK_APP": "app.py",
-  "PYTHONUNBUFFERED": "1"
-}
-
+  "name": "Flask PWA Devcontainer",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "image": null,
+  "runArgs": [
+    "--init"
+  ],
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+  "remoteUser": "vscode",
   "settings": {
-    "terminal.integrated.shell.linux": "/bin/bash"
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "python.pythonPath": "/usr/local/bin/python",
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+    "files.exclude": {
+      "**/__pycache__": true,
+      "**/.pytest_cache": true
+    }
   },
   "extensions": [
     "ms-python.python",
-    "ms-python.vscode-pylance"
+    "ms-azuretools.vscode-docker",
+    "eamodio.gitlens",
+    "ms-vscode.vscode-typescript-next"
   ],
-  "postCreateCommand": "pip install -r requirements-dev.txt"
+  "postCreateCommand": "python -m pip install --upgrade pip && pip install -r requirements-dev.txt || true",
+  "postStartCommand": "",
+  "forwardPorts": [
+    8000
+  ],
+  "portsAttributes": {
+    "8000": {
+      "label": "Flask app",
+      "onAutoForward": "notify"
+    }
+  },
+  "remoteEnv": {
+    "FLASK_ENV": "development",
+    "DATABASE_URL": "sqlite:///instance/app.sqlite3"
+  },
+  "features": {},
+  "shutdownAction": "stopContainer"
 }
